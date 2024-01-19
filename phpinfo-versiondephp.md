@@ -7,19 +7,19 @@ Para crear un archivo PHP que llame a phpinfo(), siga estos pasos:
 
 Cree un nuevo archivo PHP en su servidor web. Puede llamarlo como quiera, pero es común usar el nombre phpinfo.php.
 Abra el archivo PHP en un editor de texto y agregue el siguiente código:
-php
-Copiar
+
+```
 <?php
 phpinfo();
 ?>
+```
 Guarde el archivo PHP.
 Abra un navegador web y vaya a la siguiente URL: http://localhost/phpinfo.php.
 Ahora debería ver una página que muestra información sobre la configuración de PHP.
 
 Tenga en cuenta que si desea proteger el archivo phpinfo.php con una contraseña, puede hacerlo agregando el siguiente código al principio del archivo:
 
-php
-Copiar
+```
 <?php
 if (!isset($_SERVER['PHP_AUTH_USER']) || $_SERVER['PHP_AUTH_USER'] != 'username' || $_SERVER['PHP_AUTH_PW'] != 'password') {
     header('WWW-Authenticate: Basic realm="My Realm"');
@@ -28,12 +28,12 @@ if (!isset($_SERVER['PHP_AUTH_USER']) || $_SERVER['PHP_AUTH_USER'] != 'username'
     exit;
 }
 ?>
+```
 Reemplace username y password con el nombre de usuario y la contraseña que desea utilizar.
 
 También puede restringir el acceso al archivo phpinfo.php a ciertas direcciones IP o rangos de direcciones IP agregando el siguiente código al principio del archivo:
 
-php
-Copiar
+```
 <?php
 $allowed_ips = array('127.0.0.1', '192.168.1.0/24');
 if (!in_array($_SERVER['REMOTE_ADDR'], $allowed_ips)) {
@@ -41,5 +41,7 @@ if (!in_array($_SERVER['REMOTE_ADDR'], $allowed_ips)) {
     echo 'Access denied';
     exit;
 }
+
 ?>
+```
 Reemplace 127.0.0.1 y 192.168.1.0/24 con las direcciones IP o rangos de direcciones IP a los que desea permitir el acceso.
